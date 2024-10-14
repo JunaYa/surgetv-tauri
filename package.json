@@ -10,17 +10,24 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@tauri-apps/api": ">=2.0.0",
+    "@tauri-apps/plugin-shell": ">=2.0.0",
+    "antd-mobile": "^5.37.1",
+    "antd-mobile-icons": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@tauri-apps/api": ">=2.0.0",
-    "@tauri-apps/plugin-shell": ">=2.0.0"
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
+    "@tauri-apps/cli": ">=2.0.0",
+    "@types/node": "^22.7.5",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@unocss/preset-mini": "^0.63.4",
     "@vitejs/plugin-react": "^4.2.1",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
-    "@tauri-apps/cli": ">=2.0.0"
+    "unocss": "^0.63.4",
+    "utils": "link:@unocss/preset-mini/utils",
+    "vite": "^5.3.1"
   }
 }

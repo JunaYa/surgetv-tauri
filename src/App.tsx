@@ -1,51 +1,62 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
+import "~/styles/global.css";
+import TabBar from "antd-mobile/es/components/tab-bar";
+import { Badge, SafeArea } from "antd-mobile";
+import AppOutline from "antd-mobile-icons/es/AppOutline";
+import MessageFill from "antd-mobile-icons/es/MessageFill";
+import UnorderedListOutline from "antd-mobile-icons/es/UnorderedListOutline";
+import UserOutline from "antd-mobile-icons/es/UserOutline";
+import MessageOutline from "antd-mobile-icons/es/MessageOutline";
+import { Outlet } from "react-router-dom";
+
+const tabs = [
+  {
+    key: 'home',
+    title: '首页',
+    icon: <AppOutline />,
+  },
+  {
+    key: 'todo',
+    title: '发现',
+    icon: <UnorderedListOutline />,
+  },
+  {
+    key: 'message',
+    title: '福利',
+    icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />),
+  },
+  {
+    key: 'personalCenter',
+    title: '我的',
+    icon: <UserOutline />,
+  },
+]
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
 
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="main h-100vh flex flex-col">
+      <div className="content flex-1 w-full overflow-y-auto">
+        <div>
+          <SafeArea position='top' />
+        </div>
+        <Outlet />
       </div>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-
-      <p>{greetMsg}</p>
+      <div className="bottom-tabbar bg-white flex-0">
+        <div>
+          <TabBar>
+            {tabs.map(item => (
+              <TabBar.Item
+                key={item.key}
+                icon={item.icon}
+                title={item.title}
+              />
+            ))}
+          </TabBar>
+          <div>
+            <SafeArea position='bottom' />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
