@@ -1,42 +1,43 @@
 import "~/styles/global.css";
 import TabBar from "antd-mobile/es/components/tab-bar";
-import { Badge, SafeArea } from "antd-mobile";
+import { SafeArea } from "antd-mobile";
 import AppOutline from "antd-mobile-icons/es/AppOutline";
 import MessageFill from "antd-mobile-icons/es/MessageFill";
 import UnorderedListOutline from "antd-mobile-icons/es/UnorderedListOutline";
 import UserOutline from "antd-mobile-icons/es/UserOutline";
 import MessageOutline from "antd-mobile-icons/es/MessageOutline";
 import { Outlet, useNavigate } from "react-router-dom";
-
-const tabs = [
-  {
-    key: 'home',
-    title: '首页',
-    icon: <AppOutline />,
-  },
-  {
-    key: 'discover',
-    title: '发现',
-    icon: <UnorderedListOutline />,
-  },
-  {
-    key: 'gift',
-    title: '福利',
-    icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />),
-  },
-  {
-    key: 'person',
-    title: '我的',
-    icon: <UserOutline />,
-  },
-]
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleChange = (key: string) => {
-    console.log(key);
     navigate(key);
   }
+
+  const tabs = [
+    {
+      key: 'home',
+      title: t('bottom_tab.home'),
+      icon: <AppOutline />,
+    },
+    {
+      key: 'discover',
+      title: t('bottom_tab.discover'),
+      icon: <UnorderedListOutline />,
+    },
+    {
+      key: 'gift',
+      title: t('bottom_tab.gift'),
+      icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />),
+    },
+    {
+      key: 'person',
+      title: t('bottom_tab.person'),
+      icon: <UserOutline />,
+    },
+  ]
 
   return (
     <div className="main h-100vh flex flex-col">
@@ -49,7 +50,7 @@ function App() {
       <div className="bottom-tabbar bg-white flex-0">
         <div>
           <TabBar onChange={handleChange}>
-            {tabs.map(item => (
+            {tabs?.map((item: any) => (
               <TabBar.Item
                 key={item.key}
                 icon={item.icon}
