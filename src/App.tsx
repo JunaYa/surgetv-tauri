@@ -6,7 +6,7 @@ import MessageFill from "antd-mobile-icons/es/MessageFill";
 import UnorderedListOutline from "antd-mobile-icons/es/UnorderedListOutline";
 import UserOutline from "antd-mobile-icons/es/UserOutline";
 import MessageOutline from "antd-mobile-icons/es/MessageOutline";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const tabs = [
   {
@@ -15,23 +15,28 @@ const tabs = [
     icon: <AppOutline />,
   },
   {
-    key: 'todo',
+    key: 'discover',
     title: '发现',
     icon: <UnorderedListOutline />,
   },
   {
-    key: 'message',
+    key: 'gift',
     title: '福利',
     icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />),
   },
   {
-    key: 'personalCenter',
+    key: 'person',
     title: '我的',
     icon: <UserOutline />,
   },
 ]
 
 function App() {
+  const navigate = useNavigate();
+  const handleChange = (key: string) => {
+    console.log(key);
+    navigate(key);
+  }
 
   return (
     <div className="main h-100vh flex flex-col">
@@ -43,7 +48,7 @@ function App() {
       </div>
       <div className="bottom-tabbar bg-white flex-0">
         <div>
-          <TabBar>
+          <TabBar onChange={handleChange}>
             {tabs.map(item => (
               <TabBar.Item
                 key={item.key}

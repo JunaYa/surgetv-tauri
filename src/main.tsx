@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import 'virtual:uno.css'
+import AppProvider from "~/context/app";
+import Routers from "~/router";
 
 ReactDOM.createRoot(document.getElementById("app") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <AppProvider >
+      <Routers />
+    </AppProvider>
   </React.StrictMode>,
 );
