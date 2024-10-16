@@ -131,26 +131,6 @@ em-emoji-picker {
   line-height: calc(4 / 3 * 1em);
 }
 
-.content-editor {
-  --at-apply: outline-none flex-1;
-  max-width: 100%;
-
-  .custom-emoji {
-    margin: 0 0.2em;
-  }
-
-  p {
-    --at-apply: my-0;
-    line-height: calc(4 / 3 * 1em);
-  }
-  p:first-child {
-    --at-apply: mt-1;
-  }
-  p:last-child {
-    --at-apply: mb-1;
-  }
-}
-
 .skeleton-loading-bg {
   background: linear-gradient(
     90deg,
@@ -240,8 +220,4 @@ allows controlling them individually
 [data-mode="grayscale"] img:hover,
 [data-mode="grayscale"] video:hover {
   filter: grayscale(0);
-}
-
-.nuxt-loading-indicator {
-  opacity: unset !important;
 }

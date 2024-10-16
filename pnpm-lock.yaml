@@ -32,6 +32,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.27.0
     version: 6.27.0(react-dom@18.3.1)(react@18.3.1)
+  swiper:
+    specifier: ^11.1.14
+    version: 11.1.14
 
 devDependencies:
   '@tauri-apps/cli':
@@ -2178,6 +2181,11 @@ packages:
     dependencies:
       has-flag: 3.0.0
     dev: true
+
+  /swiper@11.1.14:
+    resolution: {integrity: sha512-VbQLQXC04io6AoAjIUWuZwW4MSYozkcP9KjLdrsG/00Q/yiwvhz9RQyt0nHXV10hi9NVnDNy1/wv7Dzq1lkOCQ==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /tinyexec@0.3.0:
     resolution: {integrity: sha512-tVGE0mVJPGb0chKhqmsoosjsS+qUnJVGJpZgsHYQcGoPlG3B51R3PouqTgEGH2Dc9jjFyOqOpix6ZHNMXp1FZg==}
