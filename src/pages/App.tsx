@@ -47,7 +47,7 @@ function App() {
         </div>
         <Outlet />
       </div>
-      <div className="bottom-tabbar bg-white flex-0">
+      <div className="bottom-tabbar flex-0">
         <div>
           <TabBar onChange={handleChange}>
             {tabs?.map((item: any) => (
